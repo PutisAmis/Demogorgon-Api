@@ -1,7 +1,11 @@
 const passport = require("passport");
 const userCtrl = require("../controllers/user");
+require("../lib/passportJwt");
 
 module.exports = app =>{
+    app.get('/', passport.authenticate('jwt', { session: false }), (res, req) =>{
+        res.send(res.token);
+    });
     app.get('/users', (res, req) =>{
 
     });
@@ -10,8 +14,8 @@ module.exports = app =>{
 
     });
 
-    app.post('/user', (res, req) =>{
-
+    app.post('/user', passport.authenticate('jwt', { session: false }), (res, req) =>{
+        res.send(res.token);
     });
 
     app.put('/user/:id', (res, req) =>{
