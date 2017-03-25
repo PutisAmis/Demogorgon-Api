@@ -7,9 +7,10 @@ const UserSchema = Schema({
     provider_id: String,
     email: String,
     picture: String,
-    role: {type: String, enum:["administrator", "user"], default:"user"},
+    role: {type: String, enum:["superAdministrator", "administrator", 'inCharge', 'basic']},
     signedUpDate: {type: Date, default: Date.now()},
     lastDate: Date
 });
 
-mongoose.model("User", UserSchema);
+const userModel = mongoose.model("User", UserSchema);
+module.exports.UserModel = userModel;

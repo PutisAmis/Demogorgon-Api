@@ -3,26 +3,27 @@ const userCtrl = require("../controllers/user");
 require("../lib/passportJwt");
 
 module.exports = app =>{
-    app.get('/', passport.authenticate('jwt', { session: false }), (res, req) =>{
-        res.send(res.token);
-    });
-    app.get('/users', (res, req) =>{
+    /**
+     * Ruta de testeo
+        app.get('/', passport.authenticate('jwt', { session: false }), (req, res) =>{
+            res.send(res.token);
+        });
+    */
+    app.get('/users',  passport.authenticate('jwt', { session: false }), (req, res) =>{
 
     });
 
-    app.get('/user/:id', (res, req) =>{
+    app.get('/user/:id', passport.authenticate('jwt', { session: false }),  (req, res) =>{
 
     });
 
-    app.post('/user', passport.authenticate('jwt', { session: false }), (res, req) =>{
-        res.send(res.token);
-    });
+    app.post('/user', passport.authenticate('jwt', { session: false }), userCtrl.addUser);
 
-    app.put('/user/:id', (res, req) =>{
+    app.put('/user/:id', passport.authenticate('jwt', { session: false }), (req, res) =>{
 
     });
 
-    app.delete('/user/:id', (res, req) =>{
+    app.delete('/user/:id', passport.authenticate('jwt', { session: false }),  (req, res) =>{
 
     });
 }
