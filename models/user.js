@@ -41,7 +41,7 @@ const UserSchema = Schema({
     loc: {
         type:{
             type: String,
-            required: true,
+            required: false,
             enum: ['Point', 'LineString', 'Polygon'],
             default: 'Point'
         },
@@ -49,12 +49,12 @@ const UserSchema = Schema({
     },
     loc_name: {
         type:String,
-        required: true
+        required: false
     },
     sanitary: {
         type: Boolean,
         default: false,
-        required: true
+        required: false
     }
 });
 
