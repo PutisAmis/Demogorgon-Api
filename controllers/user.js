@@ -10,10 +10,7 @@ module.exports = {
             lastDate: Date.now
         });
         userModel.save( (err, user, numAffected) =>{
-            if(err){
-                return res.send({err: err}).end();
-            }
-            return res.send({err: false}).end();
+            return res.send({err: err? err: false}).end();
         })        
     }
 
